@@ -34,8 +34,22 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-mongoose.connect("mongodb://0.0.0.0:27017/userDB", {useNewUrlParser: true});
-// mongoose.set("useCreateIndex", true);
+// mongoose.connect(process.env.MONGO_URL + "/userDB", {useNewUrlParser: true});
+// console.log(process.env.MONGO_URL);
+// // mongoose.set("useCreateIndex", true);
+// async function connectToDatabase() {
+//     try {
+//       await mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true });
+//       console.log("Connected to the database successfully");
+//       // You can start your application logic here
+//     } catch (err) {
+//       console.error("Error connecting to the database:", err);
+//     }
+//   }
+  
+//   connectToDatabase();
+mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true });
+   
 
 const userSchema = new mongoose.Schema ({
     email: String,
